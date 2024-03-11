@@ -21,7 +21,7 @@ class Postile extends StatelessWidget {
         // height: 350,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Colors.white,
+          // color: Colors.white,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -34,8 +34,12 @@ class Postile extends StatelessWidget {
                     backgroundImage: AssetImage(profileimg),
                     radius: 25,
                   ),
-                  const SizedBox(),
-                  TextButton(onPressed: () {}, child: Text(username)),
+                  const SizedBox(width: 6),
+                  Text(username,
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20)),
                   Text(
                     time,
                     style: const TextStyle(fontWeight: FontWeight.w100),
@@ -52,12 +56,11 @@ class Postile extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 3,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(postimg),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(20)
-                  ),
+                      image: DecorationImage(
+                        image: AssetImage(postimg),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(20)),
                 )),
             Row(
               children: [

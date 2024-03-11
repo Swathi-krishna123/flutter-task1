@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task1/data.dart';
+import 'package:flutter_task1/storydata.dart';
 import 'package:flutter_task1/widgets/postile.dart';
+import 'package:flutter_task1/widgets/storytile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +27,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Data data=Data();
+    StoryData dataas=StoryData();
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -56,10 +59,11 @@ class HomeScreen extends StatelessWidget {
             ),
             SafeArea(
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Column(
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Hello,",
@@ -69,12 +73,13 @@ class HomeScreen extends StatelessWidget {
                             style: TextStyle(color: Colors.blue, fontSize: 30)),
                       ],
                     ),
-                    Spacer(),
+              
+                    const Spacer(),
                     OutlinedButton(
                         onPressed: () {},
                         child: const Text(
                           "Add Content  +",
-                          style: TextStyle(color: Colors.blue),
+                          style: TextStyle(color:  Colors.blue),
                         )),
                   ],
                 ),
@@ -86,21 +91,15 @@ class HomeScreen extends StatelessWidget {
               child: Expanded(
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 50,
-                  separatorBuilder: (context, index) => SizedBox(width: 10),
+                  itemCount: dataas.items.length,
+                  separatorBuilder: (context, index) => const SizedBox(width: 10),
                   itemBuilder: (context, index) {
-                    return Container(
-                      height: 5,
-                      width: 160,
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(20)),
-                    );
+                    return Storytile(image: dataas.items[index]["image"], time: dataas.items[index]["time"],name: dataas.items[index]["name"],proimg: dataas.items[index]["proimg"],);
                   },
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView.separated(
                 scrollDirection: Axis.vertical,
